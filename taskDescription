@@ -1,0 +1,46 @@
+Project TodoList:
+- Multiple Users
+- User can create and set dat of Task in own calendar
+- User can be friend with another users 
+- User can create shared events with his friends (assign tasks to one or more friend)
+- User can send messages to his friends
+- User can comment events(own and his friends)
+- User is able to search future and past events
+- User is able to get callendar of any of his friend
+- User is able to export and import his callendar to XML
+
+
+Use: 
+IOC: Spring | Guice (configure from config file )
+REST: Spring MVC | Jersy |(configure from config file)
+ORM : Spring Data | JPA Hibernate | JDBC Queries | iBatis
+Front-End: Angular JS | jQuery
+Database: Mysql | Mongo | etc .... 
+UnitTesting: jUnit, Mockito
+VCS : Git (commit stable versions only!)
+
+
+
+API Spec:
+api/user/{username | userId}  (GET, PUT, DELETE) - admin only
+api/user (POST) - all
+api/user (GET) - all 
+api/user?mode=online (GET) - all 
+api/user?mode=offline (GET) - all
+api/user/mode=all (GET)  - all
+
+api/task (GET) - all
+api/task/{user} (GET) - all
+api/task/id (DELETE) - owner | creator
+
+
+Tasks:
+- implement basic functionality using Spring Framework (MVC, Data, IoC)
+- write unit tests for controllers
+- replace Spring Mvc by Jersey
+
+_________________________________________________________________
+// NOT NEEDED FOR NOW
+Spring Security for Authorization
+Messagin:  WebSockets | JMS+ActiveMQ polling (2 implementations)
+

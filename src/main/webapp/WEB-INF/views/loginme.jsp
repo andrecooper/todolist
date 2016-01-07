@@ -7,7 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/todolist.css">
+    <link rel="stylesheet" href="/todoList/resources/css/todolist.css">
 </head>
 <body onload='document.loginForm.username.focus();' style="background-color: whitesmoke">
 

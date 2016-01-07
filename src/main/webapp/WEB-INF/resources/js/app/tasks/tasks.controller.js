@@ -15,7 +15,7 @@
             if (!user || user === 'All Users'){
                 user="";
             }
-            var response = $http.get('/todoList/api/task' + user);
+            var response = $http.get('/todoList/api/task/' + user);
             response.success(function (data, status, header, config) {
                 console.log("received tasklist:", data);
 

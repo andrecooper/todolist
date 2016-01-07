@@ -6,12 +6,14 @@ import com.home.todoList.app.users.repository.UserRepository;
 import com.home.todoList.common.utilities.exceptions.SuperException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @Service
+@Transactional
 public class UserService {
 
     @Autowired

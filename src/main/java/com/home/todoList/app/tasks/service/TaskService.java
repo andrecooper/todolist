@@ -26,7 +26,8 @@ public class TaskService {
     UserRepository userRepository;
 
     @Autowired
-    @PersistanceSource(value = Source.SPRING_DATA)
+    @PersistanceSource(value = Source.JDBC)
+//    @PersistanceSource(value = Source.SPRING_DATA)
     TaskRepository taskRepository;
 
     public List<TaskDto> getAllTasks() {

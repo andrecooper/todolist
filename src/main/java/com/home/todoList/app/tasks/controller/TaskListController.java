@@ -1,6 +1,5 @@
 package com.home.todoList.app.tasks.controller;
 
-import com.home.todoList.app.tasks.model.Task;
 import com.home.todoList.app.tasks.model.TaskDto;
 import com.home.todoList.app.tasks.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +21,7 @@ public class TaskListController {
     }
 
     @RequestMapping(value = "/task/{username}", method = RequestMethod.GET)
-    public List<Task> getTaskListByUser(@PathVariable String username) {
+    public List<TaskDto> getTaskListByUser(@PathVariable String username) {
         System.out.println("\n FIND TASKS FOR " + username);
         return taskService.getTaskListByUser(username);
     }

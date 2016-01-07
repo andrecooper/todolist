@@ -9,8 +9,6 @@ import java.util.List;
 public interface TaskRepository {
     List<Task> getAllTasks();
     List<Task> getTasksByOwner(User user);
-
-    @Transactional
     boolean addTask (Task task);
     boolean deleteTask (long id);
 }

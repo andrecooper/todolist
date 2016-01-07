@@ -27,7 +27,9 @@ public class TaskRepositorySpringImpl implements TaskRepository {
 
     @Override
     public List<Task> getTasksByOwner(User username) {
-        return repository.findByOwner(username);
+        List<Task> byOwner = repository.findByOwner(username);
+        System.out.println("FOUND TASKS: " + byOwner);
+        return byOwner;
     }
 
     @Override

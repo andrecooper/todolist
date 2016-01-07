@@ -21,6 +21,7 @@ import java.util.Set;
 @Service
 @Transactional
 public class TaskService {
+
     @Autowired
     UserRepository userRepository;
 
@@ -42,12 +43,24 @@ public class TaskService {
         return taskDtoList;
     }
 
-    public List<Task> getTaskListByUser(String user) {
+    public List<TaskDto> getTaskListByUser(String user) {
         User creator = userRepository.findByUsername(user);
-        return taskRepository.getTasksByOwner(creator);
+        System.out.println("FOUND USER" + creator);
+        List<Task> allTasks = taskRepository.getTasksByOwner(creator);
+
+        List<TaskDto> taskDtoList = new LinkedList<>();
+        for (Task task : allTasks) {
+            TaskDto taskDto = new TaskDto();
+            taskDto.setId(task.getId());
+            taskDto.setTaskName(task.getTaskName());
+            taskDto.setOwner(task.getOwner().getUsername());
+            taskDtoList.add(taskDto);
+        }
+
+        return taskDtoList;
     }
 
-    @Transactional
+
     public Set<String> findAllTaskOwners() {
         Iterable<Task> allCreator = taskRepository.getAllTasks();
 

@@ -7,6 +7,7 @@ import com.home.todoList.app.users.model.User;
 import com.home.todoList.app.users.repository.UserRepository;
 import com.home.todoList.common.utilities.annotations.persistance.PersistanceSource;
 import com.home.todoList.common.utilities.annotations.persistance.Source;
+import com.home.todoList.common.utilities.convertors.TaskToDtoConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,41 +31,27 @@ public class TaskService {
 //    @PersistanceSource(value = Source.SPRING_DATA)
     TaskRepository taskRepository;
 
+
+    @Autowired
+    TaskToDtoConverter taskToDtoConverter;
+
     public List<TaskDto> getAllTasks() {
         List<Task> allTasks = taskRepository.getAllTasks();
-        List<TaskDto> taskDtoList = new LinkedList<>();
-        for (Task task : allTasks) {
-            TaskDto taskDto = new TaskDto();
-            taskDto.setId(task.getId());
-            taskDto.setTaskName(task.getTaskName());
-            taskDto.setOwner(task.getOwner().getUsername());
-            taskDtoList.add(taskDto);
-        }
-
-        return taskDtoList;
+        return taskToDtoConverter.getTaskDTO(allTasks);
     }
+
+
 
     public List<TaskDto> getTaskListByUser(String user) {
         User creator = userRepository.findByUsername(user);
         System.out.println("FOUND USER" + creator);
         List<Task> allTasks = taskRepository.getTasksByOwner(creator);
-
-        List<TaskDto> taskDtoList = new LinkedList<>();
-        for (Task task : allTasks) {
-            TaskDto taskDto = new TaskDto();
-            taskDto.setId(task.getId());
-            taskDto.setTaskName(task.getTaskName());
-            taskDto.setOwner(task.getOwner().getUsername());
-            taskDtoList.add(taskDto);
-        }
-
-        return taskDtoList;
+        return taskToDtoConverter.getTaskDTO(allTasks);
     }
 
 
     public Set<String> findAllTaskOwners() {
-        Iterable<Task> allCreator = taskRepository.getAllTasks();
-
+        List<Task> allCreator = taskRepository.getAllTasks();
         System.out.println("\n ALL TASKS: " + allCreator);
         Set<String> creatorSet = new HashSet<>();
         for (Task task : allCreator) {

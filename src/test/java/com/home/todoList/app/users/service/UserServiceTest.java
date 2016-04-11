@@ -5,12 +5,12 @@ import org.junit.Test;
 
 public class UserServiceTest {
 
-    @Test
+//    @Test
     public void testGetAllUsers() throws Exception {
 
     }
 
-    @Test
+//    @Test
     public void testRegisterUser() throws Exception {
 
     }

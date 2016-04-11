@@ -27,9 +27,10 @@ public class AppConfig {
     @Autowired
     Environment environment;
 
-    /*@Autowired
+    @Autowired
     JpaVendorAdapter jpaVendorAdapter;
-*/
+
+
     @Bean(name = "dataSource")
 //    @Dev
     public DriverManagerDataSource dataSource() {
@@ -48,8 +49,7 @@ public class AppConfig {
     }
 
     @Bean
-    @Dev
-    public JpaVendorAdapter jpaVendorAdapterDev() {
+    public JpaVendorAdapter jpaVendorAdapter() {
         HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setDatabase(Database.MYSQL);
         jpaVendorAdapter.setGenerateDdl(true);

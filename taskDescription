@@ -6,8 +6,8 @@ Project TodoList:
 - User can send messages to his friends
 - User can comment events(own and his friends)
 - User is able to search future and past events
-- User is able to get callendar of any of his friend
-- User is able to export and import his callendar to XML
+- User is able to get calendar of any of his friend
+- User is able to export and import his calendar to XML
 
 
 Use: 
@@ -20,19 +20,14 @@ UnitTesting: jUnit, Mockito
 VCS : Git (commit stable versions only!)
 
 
-
 API Spec:
-api/user/{username | userId}  (GET, PUT, DELETE) - admin only
-api/user (POST) - all
-api/user (GET) - all 
-api/user?mode=online (GET) - all 
-api/user?mode=offline (GET) - all
-api/user/mode=all (GET)  - all
+api/user (GET) - get all users
+api/user (POST) - add user
 
-api/task (GET) - all
-api/task/{user} (GET) - all
-api/task/id (DELETE) - owner | creator
-
+api/task (GET) - get all tasks
+api/task (POST) - add task
+api/task/{user} (GET) - get task for user
+api/task/owners (GET) - get all task owners
 
 Tasks:
 - implement basic functionality using Spring Framework (MVC, Data, IoC)
@@ -41,6 +36,5 @@ Tasks:
 
 _________________________________________________________________
 // NOT NEEDED FOR NOW
-Spring Security for Authorization
 Messagin:  WebSockets | JMS+ActiveMQ polling (2 implementations)
 
